@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 type propTypes = {
   userLoggedIn: boolean,
@@ -6,10 +7,18 @@ type propTypes = {
 }
 
 const Dashboard = ({userLoggedIn, setUserLoggedIn}: propTypes) => {
+  const navigator = useNavigate();
+  
+  const handleSignOut = () => {
+    setUserLoggedIn(false);
+    sessionStorage.removeItem("canStayLoggedIn");
+    navigator("/login");
+  }
+  
   return (
     <div>
       Dashboard
-      <button onClick={() => setUserLoggedIn(false)}>SignOut</button>
+      <button onClick={() => handleSignOut()}>SignOut</button>
     </div>
   )
 }
