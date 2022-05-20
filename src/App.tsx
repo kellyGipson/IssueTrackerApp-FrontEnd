@@ -22,25 +22,22 @@ function App() {
 
   let navigate = useNavigate();
 
-  const checkUserLoggedIn = ():null | number => {
+  const checkUserLoggedIn = (): boolean => {
     if(sessionStorage.getItem("canStayLoggedIn")) {
-      return 1;
+      return true;
     }
 
-    return null;
+    return false;
   }
 
   
   useEffect(() => {
     if(checkUserLoggedIn()) {
-      console.log("welcome back!")
       navigate("/dashboard");
     } else {
-      console.log("Not logged in...");
       navigate("/login");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [userLoggedIn])
   
   return (
     <>

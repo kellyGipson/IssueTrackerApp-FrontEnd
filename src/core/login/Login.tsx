@@ -83,13 +83,13 @@ const Login = (props: propTypes) => {
     let userData = localStorage.getItem("userData") // Checking for local user data because there is no backend yet
     if(userData) {
       let userDataObject: USER = JSON.parse(userData);
-      if(userDataObject.email === props.email && userDataObject.password === props.password) { // Check if inputted password matches what's in localStorage
+      if(userDataObject.email.toLowerCase === props.email.toLowerCase && userDataObject.password === props.password) { // Check if inputted password matches what's in localStorage
         sessionStorage.setItem("canStayLoggedIn", "true");
         return;
       }
     }
     props.setPassword("");
-    throw new Error();
+    throw new Error("no match");
   }
 
   // Lifecycle Changes & State Updates

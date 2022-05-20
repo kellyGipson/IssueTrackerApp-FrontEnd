@@ -7,8 +7,11 @@ module.exports = {
       fontFamily: {
         sans: ['Lato', ...defaultTheme.fontFamily.sans],
       },
-      style: {
-        
+      width: {
+        '18': '4.25rem',
+      },
+      height: {
+        '18': '4.25rem',
       }
     },
     screens: {
